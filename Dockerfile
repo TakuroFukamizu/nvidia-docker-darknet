@@ -20,11 +20,13 @@ RUN set -ex; \
 WORKDIR /
 RUN set -x; \
     git clone https://github.com/pjreddie/darknet.git; \
+    git checkout ${DNT_COMMIT} $; \
     sed -e s/GPU=0/GPU=1/ darknet/Makefile; \
     (cd darknet && make && rm -rf scripts src results obj .git)
 
 # basic assets
 RUN set -x; \
+    cd darknet; \
     wget https://pjreddie.com/media/files/yolov3.weights; \
     wget https://pjreddie.com/media/files/yolov3-tiny.weights; \
     wget https://pjreddie.com/media/files/darknet53.conv.74
@@ -36,5 +38,5 @@ COPY --from=build-env /darknet /opt/darknet
 
 ## Test run
 WORKDIR /opt/darknet
-CMD ["./darknet", "detect", "cfg/yolov3.cfg", "yolov3.weights", "data/dog.jpg"]
+# CMD ["./darknet", "detect", "cfg/yolov3.cfg", "yolov3.weights", "data/dog.jpg"]
 
