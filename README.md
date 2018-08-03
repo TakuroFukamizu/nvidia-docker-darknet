@@ -16,7 +16,7 @@ LICENSE.fuck  LICENSE.gpl  LICENSE.mit   Makefile    backup     darknet  data   
 ## Rebuilding the containers
 
 ```sh
-$ export DNT_COMMIT="COMMIT HASH OF SOURCE VERSION" &&  docker build -t fkmy/nvidia-docker-darknet:latest .
+$ docker build --build-arg DNT_COMMIT="COMMIT HASH OF SOURCE VERSION" -t fkmy/nvidia-docker-darknet:latest .
 ```
 
 |      tag       |                                                                source version                                                                 |

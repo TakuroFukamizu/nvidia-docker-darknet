@@ -2,6 +2,8 @@ FROM nvidia/cuda:8.0-runtime-ubuntu16.04 AS build-env
 
 LABEL maintainer "Takuro Fukamizu <takuro.f.1987@gmail.com>"
 
+ARG DNT_COMMIT
+
 # install dependencies
 RUN set -ex; \
     apt-get update; \
@@ -21,7 +23,7 @@ WORKDIR /
 RUN set -x; \
     ln -s /usr/local/cuda-8.0 /usr/local/cuda; \
     git clone https://github.com/pjreddie/darknet.git; \
-    git checkout ${DNT_COMMIT} $; \
+    git checkout $DNT_COMMIT ; \
     sed -i -e s/GPU=0/GPU=1/ darknet/Makefile; \
     (cd darknet && make && rm -rf scripts src results obj .git)
 
