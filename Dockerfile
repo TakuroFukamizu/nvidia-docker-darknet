@@ -21,7 +21,7 @@ WORKDIR /
 RUN set -x; \
     git clone https://github.com/pjreddie/darknet.git; \
     git checkout ${DNT_COMMIT} $; \
-    sed -e s/GPU=0/GPU=1/ darknet/Makefile; \
+    sed -i -e s/GPU=0/GPU=1/ darknet/Makefile; \
     (cd darknet && make && rm -rf scripts src results obj .git)
 
 # basic assets
