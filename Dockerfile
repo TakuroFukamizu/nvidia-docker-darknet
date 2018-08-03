@@ -19,6 +19,7 @@ RUN set -ex; \
 # Build darknet with GPU
 WORKDIR /
 RUN set -x; \
+    ln -s /usr/local/cuda-8.0 /usr/local/cuda; \
     git clone https://github.com/pjreddie/darknet.git; \
     git checkout ${DNT_COMMIT} $; \
     sed -i -e s/GPU=0/GPU=1/ darknet/Makefile; \
