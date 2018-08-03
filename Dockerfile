@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-runtime-ubuntu16.04 AS build-env
+FROM nvidia/cuda:8.0-devel-ubuntu16.04 AS build-env
 
 LABEL maintainer "Takuro Fukamizu <takuro.f.1987@gmail.com>"
 
