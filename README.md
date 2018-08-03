@@ -11,6 +11,9 @@ $ docker run --runtime=nvidia -it --rm fkmy/nvidia-docker-darknet:latest
 root@3a19413c64cd:/opt/darknet# ls
 LICENSE       LICENSE.gen  LICENSE.meta  LICENSE.v1  README.md  cfg      darknet53.conv.74  examples  libdarknet.a   python               yolov3.weights
 LICENSE.fuck  LICENSE.gpl  LICENSE.mit   Makefile    backup     darknet  data               include   libdarknet.so  yolov3-tiny.weights
+
+# example: train yolov3
+root@3a19413c64cd:/opt/darknet# ./darknet detector train cfg/voc.data cfg/yolov3-voc.cfg darknet53.conv.74
 ```
 
 ## Rebuilding the containers
